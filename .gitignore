@@ -1,3 +1,4 @@
 .idea
 .vscode
 
+./auth/node_modules
