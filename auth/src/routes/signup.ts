@@ -23,10 +23,6 @@ router.post(
         const { email, password } = req.body;
 
         console.log('Creating a user...');
-
-        if (!email || typeof email !== 'string') {
-            res.status(400).send('Provide a valid email');
-        }
 });
 
 export { router as signupRouter }
