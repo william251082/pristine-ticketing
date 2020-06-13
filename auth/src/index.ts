@@ -53,10 +53,3 @@ app.listen(3000, () => {
 });
 
 start();
-
-// // overwrite how js turns js objects to JSON
-// const person = { name: 'alex' };
-// JSON.stringify(person);
-// const personTwo = { name: 'alex', toJSON() { return 1; } };
-// JSON.stringify(personTwo);
-// "1"
