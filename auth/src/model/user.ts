@@ -27,6 +27,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, {
+    // view level logic, not model
+    toJSON: {
+        transform(doc, ret) {
+            ret.id = ret._id;
+            delete ret._id;
+            delete ret.password;
+            delete ret.__v;
+        }
+    }
 });
 
 // middleware func from mongoose
