@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import {Password} from "../services/password";
 
 // describes required props of new User
 interface userAttrs {
@@ -27,6 +28,16 @@ const userSchema = new mongoose.Schema({
         required: true
     }
 });
+
+// middleware func from mongoose
+userSchema.pre('save', async function (done) {
+    if (this.isModified('password')) {
+        const hashed = await Password.toHash(this.get('password'));
+        this.set('password', hashed);
+    }
+    done();
+});
+
 userSchema.statics.build = (attrs: userAttrs) => {
     return new User(attrs);
 };
