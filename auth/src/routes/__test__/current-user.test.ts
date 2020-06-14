@@ -13,3 +13,12 @@ it('response with details about the current user', async () => {
     expect(response.body.currentUser.email).toEqual('test@test.com');
 });
 
+it('response with error if not authenticated', async () => {
+    const response = await request(app)
+        .get('/api/users/currentuser')
+        .send()
+        .expect(401);
+
+    expect(response.body.errors[0].message).toEqual('Not Authorized');
+});
+
