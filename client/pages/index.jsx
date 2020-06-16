@@ -8,11 +8,14 @@ const LandingPage = ({ color }) => {
 };
 
 LandingPage.getInitialProps = async () => {
-    // // request on server
-    // const response = await axios.get('/api/users/currentuser');
-    //
-    // return response.data;
-    console.log('getInitialProps executed');
+    if (typeof window === 'undefined') {
+        // we are on the server
+        // requests should be made to http://ingress-nginx.....
+    } else {
+        // we are on the browser
+        // request can be made with a base url of '
+    }
+
     return {};
 };
 
