@@ -4,12 +4,12 @@ const LandingPage = ({ currentUser }) => {
     // // request on browser
     // axios.get('/api/users/currentuser');
     console.log('curr user', currentUser);
-    return <h1>Index Page!!!!!!</h1>;
+    return currentUser ?  <h1>You are signed in</h1> : <h1>You are signed out</h1>;
 };
 
 LandingPage.getInitialProps = async context => {
     const client = buildClient(context);
-    const { data } = await client.get('api/users/currentuser');
+    const { data } = await client.get('/api/users/currentuser');
 
     return data;
 };
