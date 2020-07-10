@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 
-export default ({ Component, pageProps }) => {
+const AppComponent = ({ Component, pageProps }) => {
     return (
         <div>
             <h1>Header</h1>
@@ -8,3 +8,9 @@ export default ({ Component, pageProps }) => {
         </div>
     );
 };
+
+AppComponent.getInitialProps = () => {
+
+};
+
+export default AppComponent;
