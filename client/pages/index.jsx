@@ -3,7 +3,7 @@ import buildClient from '../api/build-client'
 const LandingPage = ({ currentUser }) => {
     // // request on browser
     // axios.get('/api/users/currentuser');
-    console.log('req on browser curr user,', currentUser);
+    // console.log('req on browser curr user,', currentUser);
     return currentUser ?  <h1>You are signed in</h1> : <h1>You are signed out</h1>;
 };
 
