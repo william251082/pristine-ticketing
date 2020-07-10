@@ -5,7 +5,7 @@ import Header from '../components/header'
 const AppComponent = ({ Component, pageProps, currentUser }) => {
     return (
         <div>
-            <Header/>
+            <Header currentUser={currentUser}/>
             <Component {...pageProps} />
         </div>
     );
@@ -24,8 +24,8 @@ AppComponent.getInitialProps = async (appContext) => {
         const pageProps = await appContext.Component.getInitialProps(appContext.ctx);
     }
 
-    // console.log('current user', data);
-    console.log('pageProps', pageProps);
+    console.log('current user', data);
+    // console.log('pageProps', pageProps);
 
     // will show on the args of AppComponent
     return {
