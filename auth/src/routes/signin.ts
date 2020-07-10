@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import {body} from "express-validator";
-import {validateRequest} from "../../../common/src/middlewares/validate-request";
+import {validateRequest} from "@iceshoptickets/common";
 import {User} from "../model/user";
-import {BadRequestError} from "../../../common/src/errors/bad-request-error";
+import {BadRequestError} from "@iceshoptickets/common";
 import {Password} from "../services/password";
 import jwt from "jsonwebtoken";
 
