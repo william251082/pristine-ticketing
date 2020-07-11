@@ -41,8 +41,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongodb_memory_server_1 = require("mongodb-memory-server");
 var mongoose_1 = __importDefault(require("mongoose"));
-var supertest_1 = __importDefault(require("supertest"));
-var app_1 = require("../app");
 var mongo;
 beforeAll(function () { return __awaiter(void 0, void 0, void 0, function () {
     var mongoUri;
@@ -102,21 +100,7 @@ afterAll(function () { return __awaiter(void 0, void 0, void 0, function () {
     });
 }); });
 global.signin = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var email, password, response;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                email = 'test@test.com';
-                password = 'password';
-                return [4 /*yield*/, supertest_1.default(app_1.app)
-                        .post('/api/users/signup')
-                        .send({
-                        email: email, password: password
-                    })
-                        .expect(201)];
-            case 1:
-                response = _a.sent();
-                return [2 /*return*/, response.get('Set-Cookie')];
-        }
+        return [2 /*return*/];
     });
 }); };
