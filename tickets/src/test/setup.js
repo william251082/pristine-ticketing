@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongodb_memory_server_1 = require("mongodb-memory-server");
 var mongoose_1 = __importDefault(require("mongoose"));
+var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var mongo;
 beforeAll(function () { return __awaiter(void 0, void 0, void 0, function () {
     var mongoUri;
@@ -99,8 +100,22 @@ afterAll(function () { return __awaiter(void 0, void 0, void 0, function () {
         }
     });
 }); });
-global.signin = function () { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        return [2 /*return*/];
-    });
-}); };
+global.signin = function () {
+    // Build a jsonwebtoken payload. {id, email}
+    var payload = {
+        id: '1235tgbdf2',
+        email: 'test@test.com'
+    };
+    // Create the JWT
+    var token = jsonwebtoken_1.default.sign(payload, process.env.JWT_KEY);
+    // Build session Object. { jwt: MY_JWT }
+    var session = { jwt: token };
+    // Turn that session into json
+    var sessionJSON = JSON.stringify(session);
+    // Take json and encode it as base64
+    var base64 = Buffer.from(sessionJSON).toString('base64');
+    // return a string that's the cookie with the encoded data
+    // supertest expectation is an array
+    console.log(base64);
+    return ["express:sess=" + base64];
+};
