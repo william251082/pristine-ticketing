@@ -5,6 +5,7 @@ import cookieSession from 'cookie-session';
 
 import {errorHandler} from "@iceshoptickets/common";
 import {NotFoundError} from "@iceshoptickets/common";
+import {createTicketRouter} from "./routes/new";
 
 const app = express();
 // make sure tht express is aware that it's behind a proxy of ingress-nginx and still trust it
@@ -15,6 +16,8 @@ app.use(
         signed: false,
         secure: process.env.NODE_ENV !== 'test'
     }));
+
+app.use(createTicketRouter);
 
 app.all('*', async (req: Request, res: Response) => {
     throw new NotFoundError();
