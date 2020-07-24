@@ -18,3 +18,35 @@ interface TicketDoc extends mongoose.Document {
     price: string;
     userId: string;
 }
+
+const ticketSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: String,
+        required: true
+    },
+    userId: {
+        type: String,
+        required: true
+    }
+}, {
+    // view level logic, not model
+    toJSON: {
+        // ret is the object that's just about to turn to JSON
+        transform(doc, ret) {
+            ret.id = ret._id;
+            delete ret._id;
+        }
+    }
+});
+
+ticketSchema.statics.build = (attrs: TicketAttrs) => {
+    return new Ticket(attrs);
+};
+
+const Ticket = mongoose.model<TicketDoc, TicketModel>('Ticket', ticketSchema);
+
+export { Ticket };
