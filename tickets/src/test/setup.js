@@ -116,6 +116,6 @@ global.signin = function () {
     var base64 = Buffer.from(sessionJSON).toString('base64');
     // return a string that's the cookie with the encoded data
     // supertest expectation is an array
-    console.log(base64);
+    // console.log(base64)
     return ["express:sess=" + base64];
 };

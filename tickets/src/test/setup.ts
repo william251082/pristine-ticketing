@@ -57,6 +57,6 @@ global.signin = () => {
 
     // return a string that's the cookie with the encoded data
     // supertest expectation is an array
-    console.log(base64)
+    // console.log(base64)
     return [`express:sess=${base64}`];
 };
