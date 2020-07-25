@@ -26,11 +26,22 @@ it('returns a 401 if user is not authenticated', async () => {
 });
 
 it('returns a 401 if user does not own the ticket', async () => {
-    const id = new mongoose.Types.ObjectId().toHexString();
+    const response = await request(app)
+        .post('/api/tickets')
+        .set('Cookie', global.signin())
+        .send({
+            title: 'gvhbj',
+            price: 20
+        });
+    // edit request
     await request(app)
-        .get(`/api/tickets/${id}`)
-        .send()
-        .expect(404);
+        .put(`/api/tickets/${response.body.id}`)
+        .set('Cookie', global.signin())
+        .send({
+            title: 'sgsfdgsdf',
+            price: 200
+        })
+        .expect(401);
 });
 
 it('returns a 400 if the user provides an invalid title or price', async () => {

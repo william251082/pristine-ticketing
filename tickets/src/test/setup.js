@@ -101,9 +101,10 @@ afterAll(function () { return __awaiter(void 0, void 0, void 0, function () {
     });
 }); });
 global.signin = function () {
+    var id = new mongoose_1.default.Types.ObjectId().toHexString();
     // Build a jsonwebtoken payload. {id, email}
     var payload = {
-        id: '1235tgbdf2',
+        id: id,
         email: 'test@test.com'
     };
     // Create the JWT

@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import {NotFoundError, requireAuth} from "@iceshoptickets/common";
+import {NotAuthorizedError, NotFoundError, requireAuth} from "@iceshoptickets/common";
 import {Ticket} from "../models/ticket";
 
 const router = express.Router();
@@ -9,6 +9,10 @@ router.put('/api/tickets/:id', requireAuth, async (req: Request, res: Response) 
 
     if (!ticket) {
         throw new NotFoundError();
+    }
+
+    if (ticket.userId !== req.currentUser!.id) {
+        new NotAuthorizedError();
     }
 
     res.send(ticket);
