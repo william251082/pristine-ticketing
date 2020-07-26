@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 it('returns a 404 if the provided is not found', async () => {
     const id = new mongoose.Types.ObjectId().toHexString();
     await request(app)
-        .get(`/api/tickets/${id}`)
+        .put(`/api/tickets/${id}`)
         .set('Cookie', global.signin())
         .send({
             title: 'gvhbj',
@@ -17,7 +17,7 @@ it('returns a 404 if the provided is not found', async () => {
 it('returns a 401 if user is not authenticated', async () => {
     const id = new mongoose.Types.ObjectId().toHexString();
     await request(app)
-        .get(`/api/tickets/${id}`)
+        .put(`/api/tickets/${id}`)
         .send({
             title: 'gvhbj',
             price: 20
@@ -36,7 +36,6 @@ it('returns a 401 if user does not own the ticket', async () => {
     // edit request
     await request(app)
         .put(`/api/tickets/${response.body.id}`)
-        .set('Cookie', global.signin())
         .send({
             title: 'sgsfdgsdf',
             price: 200
@@ -94,5 +93,5 @@ it('updates the ticket provided valid inputs', async () => {
         .send();
 
     expect(ticketResponse.body.title).toEqual('new title');
-    expect(ticketResponse.body.price).toEqual(100);
+    expect(ticketResponse.body.price).toEqual("100");
 });
