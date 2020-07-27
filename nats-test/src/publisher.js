@@ -9,4 +9,12 @@ var stan = node_nats_streaming_1.default.connect('ticketing', 'abc', {
 });
 stan.on('connect', function () {
     console.log('Publisher connected to NATS');
+    var data = JSON.stringify({
+        id: '123',
+        title: 'concert',
+        price: 20,
+    });
+    stan.publish('ticket:created', data, function () {
+        console.log('Event Published');
+    });
 });
