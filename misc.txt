@@ -63,4 +63,7 @@ iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/common$ npm install nod
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/common$ npm run pub
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/tickets$ npm update @iceshoptickets/common
 
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing$ kubectl delete pod nats-depl-78677c4455-8nqqb
+
+
 
