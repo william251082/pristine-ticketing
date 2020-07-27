@@ -18,8 +18,9 @@ stan.on('connect', function () {
     var options = stan
         .subscriptionOptions()
         .setManualAckMode(true)
-        .setDeliverAllAvailable();
-    var subscription = stan.subscribe('ticket:created', options);
+        .setDeliverAllAvailable()
+        .setDurableName('accounting-service');
+    var subscription = stan.subscribe('ticket:created', 'queue-group-name', options);
     subscription.on('message', function (msg) {
         var data = msg.getData();
         if (typeof data === 'string') {
