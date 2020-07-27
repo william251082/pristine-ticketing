@@ -1,0 +1,29 @@
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+
+Accessing Env Variables in a Pod
+imperative approach, instead of writing a config file(declarative)
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+kubectl get secrets
+kubectl describe pods <name_of_pod>
+
+File detection change
+kubectl get pods
+kubectl delete pod client-depl-85b6fb44f9-2wrph
+kubectl get pods
+
+
+I found out that minikube has it own docker instance
+
+Run eval $(minikube docker-env)
+
+Then in same terminal window run docker system df
+
+This command will print out something like this
+
+TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
+Images              5                   2                   16.43 MB            11.63 MB (70%)
+Containers          2                   0                   212 B               212 B (100%)
+Local Volumes       2                   1                   36 B                0 B (0%)
+Based on this information you need to clear up resources
+
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/nats-test$ npm install node-nats-streaming ts-node-dev typescript @types/node
