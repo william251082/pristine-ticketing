@@ -40,3 +40,8 @@ rs to restart
 
 Queue groups
 -- making sure the published event is not duplicated among every service listeners
+
+
+default --when service received an event, it will automatically marked as event received, leading to error data (if any), being lost
+overwrite default behavior using .setManualAckMode(true);
+

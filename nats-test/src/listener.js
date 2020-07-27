@@ -11,11 +11,16 @@ var stan = node_nats_streaming_1.default.connect('ticketing', crypto_1.randomByt
 });
 stan.on('connect', function () {
     console.log('Listener connected to NATS');
-    var subscription = stan.subscribe('ticket:created', 'orders-service-queue-group');
+    var options = stan
+        .subscriptionOptions()
+        .setManualAckMode(true);
+    var subscription = stan.subscribe('ticket:created', 'orders-service-queue-group', options);
     subscription.on('message', function (msg) {
         var data = msg.getData();
         if (typeof data === 'string') {
             console.log("Received event #" + msg.getSequence() + ", with data: " + data);
         }
+        // will tell nats streaming service to tell, we received the message and i has been processed
+        msg.ack();
     });
 });
