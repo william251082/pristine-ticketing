@@ -54,3 +54,8 @@ localhost:8222/streaming/channelsz?subs=1
 -hbt -- how long each client has to respond
 -hbt -- number of times the request should fail before nats will assume that the connection is gone
 
+setDeliverAllAvailable()
+restart npm run publish
+npm run listen
+list of all events will be listed down
+
