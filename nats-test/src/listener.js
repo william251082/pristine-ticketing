@@ -12,6 +12,9 @@ stan.on('connect', function () {
     console.log('Listener connected to NATS');
     var subscription = stan.subscribe('ticket:created');
     subscription.on('message', function (msg) {
-        console.log('Message received');
+        var data = msg.getData();
+        if (typeof data === 'string') {
+            console.log("Received event #" + msg.getSequence() + ", with data: " + data);
+        }
     });
 });
