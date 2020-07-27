@@ -37,3 +37,6 @@ npm run publish
 npm run publish
 npm run listen
 rs to restart
+
+Queue groups
+-- making sure the published event is not duplicated among every service listeners
