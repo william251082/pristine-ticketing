@@ -59,3 +59,8 @@ restart npm run publish
 npm run listen
 list of all events will be listed down
 
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/common$ npm install node-nats-streaming
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/common$ npm run pub
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/tickets$ npm update @iceshoptickets/common
+
+
