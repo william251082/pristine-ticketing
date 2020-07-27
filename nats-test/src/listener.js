@@ -11,6 +11,10 @@ var stan = node_nats_streaming_1.default.connect('ticketing', crypto_1.randomByt
 });
 stan.on('connect', function () {
     console.log('Listener connected to NATS');
+    stan.on('close', function () {
+        console.log('NATS connection closed!');
+        process.exit();
+    });
     var options = stan
         .subscriptionOptions()
         .setManualAckMode(true);
@@ -24,3 +28,5 @@ stan.on('connect', function () {
         msg.ack();
     });
 });
+process.on('SIGINT', function () { stan.close(); });
+process.on('SIGTERM', function () { stan.close(); });
