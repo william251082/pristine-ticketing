@@ -45,3 +45,12 @@ Queue groups
 default --when service received an event, it will automatically marked as event received, leading to error data (if any), being lost
 overwrite default behavior using .setManualAckMode(true);
 
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing$ kubectl port-forward nats-depl-78677c4455-8nqqb 8222:8222
+on browser: localhost:8222/streaming
+localhost:8222/streaming/channelsz?subs=1
+-- help nats to understand to know a client subscription that won't ever come back
+-hb -- request that nats is going to send to all connected clients every second
+-hbi -- how often nats will send requests to the connected clients
+-hbt -- how long each client has to respond
+-hbt -- number of times the request should fail before nats will assume that the connection is gone
+
