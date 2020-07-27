@@ -27,3 +27,9 @@ Local Volumes       2                   1                   36 B                
 Based on this information you need to clear up resources
 
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/nats-test$ npm install node-nats-streaming ts-node-dev typescript @types/node
+
+
+kubectl get pods
+kubectl port-forward nats-depl-78677c4455-8nqqb 4222:4222
+on another terminal window:
+npm run publish
