@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -15,20 +28,7 @@ stan.on('connect', function () {
         console.log('NATS connection closed!');
         process.exit();
     });
-    var options = stan
-        .subscriptionOptions()
-        .setManualAckMode(true)
-        .setDeliverAllAvailable()
-        .setDurableName('accounting-service');
-    var subscription = stan.subscribe('ticket:created', 'queue-group-name', options);
-    subscription.on('message', function (msg) {
-        var data = msg.getData();
-        if (typeof data === 'string') {
-            console.log("Received event #" + msg.getSequence() + ", with data: " + data);
-        }
-        // will tell nats streaming service to tell, we received the message and i has been processed
-        msg.ack();
-    });
+    new TicketCreatedListener(stan).listen();
 });
 process.on('SIGINT', function () { stan.close(); });
 process.on('SIGTERM', function () { stan.close(); });
@@ -62,3 +62,17 @@ var Listener = /** @class */ (function () {
     };
     return Listener;
 }());
+var TicketCreatedListener = /** @class */ (function (_super) {
+    __extends(TicketCreatedListener, _super);
+    function TicketCreatedListener() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.subject = 'ticket:created';
+        _this.queueGroupName = 'payment-service';
+        return _this;
+    }
+    TicketCreatedListener.prototype.onMessage = function (data, msg) {
+        console.log('Event data!', data);
+        msg.ack();
+    };
+    return TicketCreatedListener;
+}(Listener));
