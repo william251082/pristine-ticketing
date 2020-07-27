@@ -4,8 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var node_nats_streaming_1 = __importDefault(require("node-nats-streaming"));
+var crypto_1 = require("crypto");
 console.clear();
-var stan = node_nats_streaming_1.default.connect('ticketing', '123', {
+var stan = node_nats_streaming_1.default.connect('ticketing', crypto_1.randomBytes(4).toString('hex'), {
     url: 'http://localhost:4222'
 });
 stan.on('connect', function () {
