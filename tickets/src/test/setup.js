@@ -42,6 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var mongodb_memory_server_1 = require("mongodb-memory-server");
 var mongoose_1 = __importDefault(require("mongoose"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+jest.mock('../nats-wrapper');
 var mongo;
 beforeAll(function () { return __awaiter(void 0, void 0, void 0, function () {
     var mongoUri;
