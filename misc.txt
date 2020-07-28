@@ -88,4 +88,7 @@ Handling Publish Failures
 --pull events from events collection the publish to nats
 -- wrap up saving the event inside the database transaction
 
+kubectl get pods
+
+
 
