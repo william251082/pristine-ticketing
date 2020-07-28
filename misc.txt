@@ -78,5 +78,9 @@ tickets-depl-7f8746c7b-slznr          1/1     Running   1          2m
 tickets-mongo-depl-68cbb6cd78-5xr9n   1/1     Running   0          7m26s
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing$
 
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/nats-test$ kubectl port-forward nats-depl-85f7b46dfb-qtgcs 4222:4222
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/nats-test$ npm run listen
+on post man post a new ticket https://ticketing.dev/api/tickets
+
 
 
