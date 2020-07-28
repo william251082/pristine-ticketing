@@ -69,7 +69,9 @@ beforeEach(function () { return __awaiter(void 0, void 0, void 0, function () {
     var collections, _i, collections_1, collection;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, mongoose_1.default.connection.db.collections()];
+            case 0:
+                jest.clearAllMocks();
+                return [4 /*yield*/, mongoose_1.default.connection.db.collections()];
             case 1:
                 collections = _a.sent();
                 _i = 0, collections_1 = collections;
