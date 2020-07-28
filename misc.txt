@@ -82,5 +82,10 @@ iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/nats-test$ kubectl port
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/nats-test$ npm run listen
 on post man post a new ticket https://ticketing.dev/api/tickets
 
+Handling Publish Failures
+-- saving the record and event at the same time
+-- separate code/process watching Events
+--pull events from events collection the publish to nats
+-- wrap up saving the event inside the database transaction
 
 
