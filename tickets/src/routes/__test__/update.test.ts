@@ -93,5 +93,5 @@ it('updates the ticket provided valid inputs', async () => {
         .send();
 
     expect(ticketResponse.body.title).toEqual('new title');
-    expect(ticketResponse.body.price).toEqual("100");
+    expect(ticketResponse.body.price).toEqual(100);
 });
