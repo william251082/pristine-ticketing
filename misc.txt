@@ -66,4 +66,17 @@ iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/tickets$ npm update @ic
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing$ kubectl delete pod nats-depl-78677c4455-8nqqb
 
 
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing$ kubectl delete pod nats-depl-85f7b46dfb-hr2d6
+pod "nats-depl-85f7b46dfb-hr2d6" deleted
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing$ kubectl get pods
+NAME                                  READY   STATUS    RESTARTS   AGE
+auth-depl-7b69cc7d47-8msxf            1/1     Running   0          7m26s
+auth-mongo-depl-fc4596ff8-k4lzs       1/1     Running   0          7m26s
+client-depl-54fffbfc8b-spdwv          1/1     Running   0          7m26s
+nats-depl-85f7b46dfb-qtgcs            1/1     Running   0          17s
+tickets-depl-7f8746c7b-slznr          1/1     Running   1          2m
+tickets-mongo-depl-68cbb6cd78-5xr9n   1/1     Running   0          7m26s
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing$
+
+
 
