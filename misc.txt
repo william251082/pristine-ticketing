@@ -91,4 +91,8 @@ Handling Publish Failures
 kubectl get pods
 
 
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ npm install
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ docker build -t iceshop/orders .
+
+
 
