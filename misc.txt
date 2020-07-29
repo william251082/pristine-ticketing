@@ -93,6 +93,7 @@ kubectl get pods
 
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ npm install
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ docker build -t iceshop/orders .
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ docker push iceshop/orders
 
 
 
