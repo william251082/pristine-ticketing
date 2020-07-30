@@ -1,6 +1,6 @@
 import {Ticket} from "../../../tickets/src/models/ticket";
 import {OrderStatus} from "@iceshoptickets/common";
-import {Order} from "./orders";
+import {Order} from "./order";
 
 // @ts-nocheck
 // To associate an existing Order and Ticket together
