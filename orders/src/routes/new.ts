@@ -7,7 +7,7 @@ import {Order} from "../models/order";
 
 const router = express.Router();
 
-const EXPIRATION_WINDOW_SECONDS = 15 * 60;
+const EXPIRATION_WINDOW_SECONDS = 10 * 60;
 
 router.post('/api/orders', requireAuth,
     [
@@ -31,8 +31,8 @@ router.post('/api/orders', requireAuth,
     // Run query to look at all orders.
     // Find an order where the ticket is the ticket we just found *and* the orders status is *not cancelled.*
     // If we find an order from that means the ticket *is reserved*
-    const isReserved = await ticket.isReserved()
-;    if (isReserved) {
+    const isReserved = await ticket.isReserved();
+    if (isReserved) {
         throw new BadRequestError('Ticket is already reserved');
     }
 
@@ -51,7 +51,7 @@ router.post('/api/orders', requireAuth,
 
     // Publish an event saying that an order was created
 
-    res.send(201).send(order);
+    res.status(201).send(order);
 });
 
 export { router as newOrderRouter };
