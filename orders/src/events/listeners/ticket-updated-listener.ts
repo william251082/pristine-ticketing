@@ -1,4 +1,4 @@
-import {Listener, Subjects, TicketCreatedEvent, TicketUpdatedEvent} from "@iceshoptickets/common";
+import {Listener, Subjects, TicketUpdatedEvent} from "@iceshoptickets/common";
 import {Message} from 'node-nats-streaming';
 import {queueGroupName} from "./queue-group-name";
 import {Ticket} from "../../models/ticket";
@@ -8,7 +8,10 @@ export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
     queueGroupName = queueGroupName;
 
     async onMessage(data: TicketUpdatedEvent['data'], msg: Message) {
-        const ticket = await Ticket.findById(data.id);
+        const ticket = await Ticket.findOne({
+            _id: data.id,
+            version: data.version - 1
+        });
 
         if(!ticket) {
             throw new Error('Ticket not found');

@@ -127,4 +127,14 @@ db.tickets.remove({})
 db.tickets.find({price:10}).length()
 
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/tickets$ npm install mongoose-update-if-current
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ npm install mongoose-update-if-current
 
+
+with version attribute
+creating ticket
+[tickets-depl-dd4847768-9b4br tickets] Event published to subject ticket:created
+[orders-depl-784bd94794-mf2sm orders] Message received: ticket:created / orders-service
+
+updating ticket
+[tickets-depl-dd4847768-9b4br tickets] Event published to subject ticket:updated
+[orders-depl-784bd94794-mf2sm orders] Message received: ticket:updated / orders-service
