@@ -138,3 +138,10 @@ creating ticket
 updating ticket
 [tickets-depl-dd4847768-9b4br tickets] Event published to subject ticket:updated
 [orders-depl-784bd94794-mf2sm orders] Message received: ticket:updated / orders-service
+
+
+executing mongo db in a pod
+kubectl get pods
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/tickets$ kubectl exec -it tickets-mongo-depl-57dfb6bb6b-7zbpb mongo
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ kubectl exec -it orders-mongo-depl-57dfb6bb6b-7zbpb mongo
+
