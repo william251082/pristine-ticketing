@@ -95,5 +95,24 @@ iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ npm install
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ docker build -t iceshop/orders .
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ docker push iceshop/orders
 
+A Quick Manual Test
 
+POST https://ticketing.dev/api/tickets
+{
+    "title": "concert",
+    "price": 80
+}
 
+PUT https://ticketing.dev/api/tickets/5f23c9371110780023f2475f
+{
+    "title": "concert",
+    "price": 81
+}
+
+creating ticket
+[tickets-depl-dd4847768-9b4br tickets] Event published to subject ticket:created
+[orders-depl-784bd94794-mf2sm orders] Message received: ticket:created / orders-service
+
+updating ticket
+[tickets-depl-dd4847768-9b4br tickets] Event published to subject ticket:updated
+[orders-depl-784bd94794-mf2sm orders] Message received: ticket:updated / orders-service
