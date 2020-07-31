@@ -125,3 +125,6 @@ db.tickets.find({price:10}).length()
 MONGO SHELL TO THE TICKETS DB
 db.tickets.remove({})
 db.tickets.find({price:10}).length()
+
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/tickets$ npm install mongoose-update-if-current
+
