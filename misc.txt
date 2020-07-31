@@ -145,3 +145,18 @@ kubectl get pods
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/tickets$ kubectl exec -it tickets-mongo-depl-57dfb6bb6b-7zbpb mongo
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/orders$ kubectl exec -it orders-mongo-depl-57dfb6bb6b-7zbpb mongo
 
+> show dbs;
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+orders  0.000GB
+> use orders;
+switched to db orders
+> db.tickets
+orders.tickets
+> db.tickets.find({ price: 80 })
+> db.tickets.find({ price: 8000 })
+> db.tickets.find({ price: 800 })
+
+
+
