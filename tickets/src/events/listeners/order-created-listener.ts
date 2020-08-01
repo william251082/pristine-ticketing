@@ -6,5 +6,7 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
     subject: Subjects.OrderCreated = Subjects.OrderCreated;
     queueGroupNmae = queueGroupName;
 
-    async onMessage(data: OrderCreatedEvent['data'], msg: Message)
+    async onMessage(data: OrderCreatedEvent['data'], msg: Message) {
+
+    }
 }
