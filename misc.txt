@@ -162,4 +162,7 @@ whenever there's order:cancelled or order:create, event should be emitted
 so all services can update their own versions
 
 
+npm install bull @types/bull
+
+
 
