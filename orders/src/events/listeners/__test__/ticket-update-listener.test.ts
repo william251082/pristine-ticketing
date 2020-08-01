@@ -20,7 +20,7 @@ const setup = async () => {
     // creates a fake data object
     const data: TicketUpdatedEvent['data'] = {
         version: ticket.version + 1,
-        id: new mongoose.Types.ObjectId().toHexString(),
+        id: ticket.id,
         title: 'new concert',
         price: 10,
         userId: new mongoose.Types.ObjectId().toHexString()
@@ -37,21 +37,22 @@ const setup = async () => {
 };
 
 it('finds, updates and saves a ticket', async () => {
-    const { listener, data, msg } = await setup();
+    const { msg, data, ticket, listener } = await setup();
 
     // call the onMessage function with the data object + message object
     await listener.onMessage(data, msg);
 
     // write assertions to make sure a ticket was created!
-    const ticket = await Ticket.findById(data.id);
+    const updatedTicket = await Ticket.findById(ticket.id);
 
-    // expect(ticket).toBeDefined();
-    // expect(ticket!.title).toEqual(data.title);
-    // expect(ticket!.price).toEqual(data.price);
+    // expect(updatedTicket).toBeDefined();
+    expect(updatedTicket!.title).toEqual(data.title);
+    expect(updatedTicket!.price).toEqual(data.price);
+    expect(updatedTicket!.version).toEqual(data.version);
 });
 
 it('acks the message', async () => {
-    const { listener, data, msg } = await setup();
+    const { msg, data, ticket, listener } = await setup();
 
     // call the onMessage function with the data object + message object
     await listener.onMessage(data, msg);
