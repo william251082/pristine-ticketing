@@ -36,21 +36,20 @@ const setup = async () => {
         ack: jest.fn()
     };
 
-    return { listener, data, msg };
+    return { listener, ticket, data, msg };
 };
 
-it('creates and saves a ticket', async () => {
-    const { listener, data, msg } = await setup();
+it('sets the userId of the ticket', async () => {
+    const { listener, ticket, data, msg } = await setup();
 
     // call the onMessage function with the data object + message object
     await listener.onMessage(data, msg);
 
     // write assertions to make sure a ticket was created!
-    const ticket = await Ticket.findById(data.id);
+    const updatedTicket = await Ticket.findById(ticket.id);
 
-    expect(ticket).toBeDefined();
-    expect(ticket!.title).toEqual(data.title);
-    expect(ticket!.price).toEqual(data.price);
+    expect(updatedTicket).toBeDefined();
+    expect(updatedTicket!.orderId).toEqual(data.id);
 });
 
 it('acks the message', async () => {
