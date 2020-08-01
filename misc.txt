@@ -163,6 +163,8 @@ so all services can update their own versions
 
 
 npm install bull @types/bull
+docker build -t iceshop/expiration .
+docker push iceshop/expiration
 
 
 
