@@ -166,5 +166,8 @@ npm install bull @types/bull
 docker build -t iceshop/expiration .
 docker push iceshop/expiration
 
+Manually restart pod:
+kubectl delete pod <pod_name>
+
 
 
