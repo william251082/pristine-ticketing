@@ -338,3 +338,30 @@ payments$ kubectl config view
 payments$ kubectl config use-context <context_name>
 payments$ kubectl get nodes
 payments$ kubectl get pods
+
+ Manual Secret Creation
+ticketing$ kubectl config use-context <context_name>
+kubectl create secret generic stripe-secret --from-literal JWT_KEY=<jwt_secret_key>
+kubectl get secrets
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<stripe_secret_key>
+kubectl get secrets
+
+
+ingress nginx
+https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean
+ticketing$ kubectl config view
+ticketing$ kubectl config use-context <context_name>
+ticketing$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/do/deploy.yaml
+
+ticketing$ kubectl get pods
+ticketing$ kubectl logs <pod_name>
+
+
+namecheap.com
+
+
+There is currently a bug with ingress-nginx on Digital Ocean.  You can read more about this bug here: https://github.com/digitalocean/digitalocean-cloud-controller-manager/blob/master/docs/controllers/services/examples/README.md#accessing-pods-over-a-managed-load-balancer-from-inside-the-cluster
+
+To fix it, add the following to the bottom of your ingress-srv.yaml file.
+
+Also, update the URL on this line to the domain name you're using: service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.ticketing-app-prod.xyz'

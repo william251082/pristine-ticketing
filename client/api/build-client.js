@@ -6,7 +6,7 @@ export default ({ req }) => {
         // console.log('req server', req.headers);
         // we are on the server
         return axios.create({
-            baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+            baseURL: 'Whatever_your_purchased_domain_is',
             headers: req.headers
         });
     } else {
