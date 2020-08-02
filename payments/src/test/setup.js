@@ -103,8 +103,7 @@ afterAll(function () { return __awaiter(void 0, void 0, void 0, function () {
         }
     });
 }); });
-global.signin = function () {
-    var id = new mongoose_1.default.Types.ObjectId().toHexString();
+global.signin = function (id) {
     // Build a jsonwebtoken payload. {id, email}
     var payload = {
         id: id,
