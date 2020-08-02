@@ -258,3 +258,27 @@ iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ docker build 
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ docker push iceshop/payments
 
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ npm install mongoose-update-if-current
+
+
+[payments-depl-7887686465-k8n7l payments] Using ts-node version 8.10.2, typescript version 3.9.7
+[orders-depl-846fcc5b99-6tj4p orders] Event published to subject order:created
+[tickets-depl-74957d868b-cp6j7 tickets] Message received: order:created / tickets-service
+[tickets-depl-74957d868b-cp6j7 tickets] Event published to subject ticket:updated
+[orders-depl-846fcc5b99-6tj4p orders] Message received: ticket:updated / orders-service
+[expiration-depl-79b58d884f-bxcsq expiration] Message received: order:created / expiration-service
+[expiration-depl-79b58d884f-bxcsq expiration] Waiting this many milliseconds to process the job:  59911
+[expiration-depl-79b58d884f-bxcsq expiration] Event published to subject expiration:complete
+[orders-depl-846fcc5b99-6tj4p orders] Message received: expiration:complete / orders-service
+[orders-depl-846fcc5b99-6tj4p orders] Event published to subject order:cancelled
+[tickets-depl-74957d868b-cp6j7 tickets] Message received: order:cancelled / tickets-service
+[orders-depl-846fcc5b99-6tj4p orders] Message received: ticket:updated / orders-service
+[tickets-depl-74957d868b-cp6j7 tickets] Event published to subject ticket:updated
+[payments-depl-7887686465-k8n7l payments] Listening on port 3000, payment
+[payments-depl-7887686465-k8n7l payments] Connected NATS
+[payments-depl-7887686465-k8n7l payments] Message received: order:created / payments-service
+[payments-depl-7887686465-k8n7l payments] Message received: order:created / payments-service
+[payments-depl-7887686465-k8n7l payments] Message received: order:created / payments-service
+[payments-depl-7887686465-k8n7l payments] Message received: order:cancelled / payments-service
+[payments-depl-7887686465-k8n7l payments] Message received: order:cancelled / payments-service
+[payments-depl-7887686465-k8n7l payments] Message received: order:cancelled / payments-service
+
