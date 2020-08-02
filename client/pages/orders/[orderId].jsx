@@ -4,6 +4,7 @@ import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 
 const OrderShow = ({ order, currentUser }) => {
+    console.log('currentUser [orderId].jsx', currentUser)
   const [timeLeft, setTimeLeft] = useState(0);
   const { doRequest, errors } = useRequest({
     url: '/api/payments',
@@ -39,14 +40,16 @@ const OrderShow = ({ order, currentUser }) => {
         token={({ id }) => doRequest({ token: id })}
         stripeKey="pk_test_51HBh0dCWSvCsvAUqbGQcJkADgDlXlpNBrknH7B3dC8zaLr1pSjmfGzQoNyEcVisInqV1lQAARNUMiNDgjXftK56e00t48ejBPX"
         amount={order.ticket.price * 100}
-        email={currentUser.email}
+        // email={currentUser.email}
       />
       {errors}
     </div>
   );
 };
 
-OrderShow.getInitialProps = async (context, client) => {
+OrderShow.getInitialProps = async (context, client, currentUser) => {
+    console.log('client [orderId].jsx', client)
+    console.log('context [orderId].jsx', context)
   const { orderId } = context.query;
   const { data } = await client.get(`/api/orders/${orderId}`);
 
