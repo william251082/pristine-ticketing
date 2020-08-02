@@ -287,3 +287,30 @@ npm install stripe
 
 kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<stripe_secret_key>
 kubectl get secrets
+
+Manual test:
+GET https://ticketing.dev/api/users/currentuser
+POST https://ticketing.dev/api/tickets
+{
+    "title": "concert",
+    "price": 911
+}
+POST https://ticketing.dev/api/orders
+{
+    "ticketId": "5f26bf120b2673001f533697"
+}
+POST https://ticketing.dev/api/payments
+{
+	"orderId": "5f26bf2357fb940018d96811",
+	"token": "tok_visa"
+}
+[orders-depl-846fcc5b99-6tj4p orders] Message received: ticket:created / orders-service
+[tickets-depl-74957d868b-cp6j7 tickets] Event published to subject ticket:created
+[orders-depl-846fcc5b99-6tj4p orders] Event published to subject order:created
+[tickets-depl-74957d868b-cp6j7 tickets] Message received: order:created / tickets-service
+[payments-depl-5577446cdd-sp2ts payments] Message received: order:created / payments-service
+[orders-depl-846fcc5b99-6tj4p orders] Message received: ticket:updated / orders-service
+[tickets-depl-74957d868b-cp6j7 tickets] Event published to subject ticket:updated
+[expiration-depl-5987b9d7f-k9ww5 expiration] Connected to NATS
+[expiration-depl-5987b9d7f-k9ww5 expiration] Message received: order:created / expiration-service
+[expiration-depl-5987b9d7f-k9ww5 expiration] Waiting this many milliseconds to process the job:  59192
