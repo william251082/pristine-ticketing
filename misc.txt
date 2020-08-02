@@ -282,3 +282,5 @@ iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ npm install m
 [payments-depl-7887686465-k8n7l payments] Message received: order:cancelled / payments-service
 [payments-depl-7887686465-k8n7l payments] Message received: order:cancelled / payments-service
 
+
+npm install stripe
