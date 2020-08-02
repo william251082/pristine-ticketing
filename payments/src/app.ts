@@ -4,6 +4,7 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 
 import { errorHandler, NotFoundError, currentUser } from "@iceshoptickets/common";
+import {createChargeRouter} from "./routes/new";
 
 const app = express();
 // make sure tht express is aware that it's behind a proxy of ingress-nginx and still trust it
@@ -16,6 +17,8 @@ app.use(
     }));
 
 app.use(currentUser);
+
+app.use(createChargeRouter);
 
 app.all('*', async (req: Request, res: Response) => {
     throw new NotFoundError();
