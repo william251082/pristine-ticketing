@@ -284,3 +284,6 @@ iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ npm install m
 
 
 npm install stripe
+
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<stripe_secret_key>
+kubectl get secrets
