@@ -24,11 +24,13 @@ export const currentUser = (
     }
 
     try {
-        req.currentUser = jwt.verify(req.session.jwt, process.env.JWT_KEY!) as UserPayload;
-        const payload = req.currentUser;
-    } catch (err) {
+        const payload = jwt.verify(
+            req.session.jwt,
+            process.env.JWT_KEY!
+        ) as UserPayload;
 
-    }
+        req.currentUser = payload;
+    } catch (err) {}
 
-    next();
+  next();
 };
