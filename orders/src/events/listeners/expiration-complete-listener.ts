@@ -2,6 +2,7 @@ import {ExpirationCompleteEvent, Listener, OrderStatus, Subjects} from "@iceshop
 import {queueGroupName} from "./queue-group-name";
 import {Message} from "node-nats-streaming";
 import {Order} from "../../models/order";
+import {OrderCancelledPublisher} from "../publishers/order-cancelled-publisher";
 
 export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent> {
     subject: Subjects.ExpirationComplete = Subjects.ExpirationComplete;
@@ -15,8 +16,17 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent
         }
 
         order.set({
-            status: OrderStatus.Cancelled,
-            ticket: null
-        })
+            status: OrderStatus.Cancelled
+        });
+        await order.save();
+        new OrderCancelledPublisher(this.client).publish({
+            id: order.id,
+            version: order.version,
+            ticket: {
+                id: order.ticket.id
+            }
+        });
+
+        msg.ack();
     }
 }
