@@ -192,4 +192,28 @@ POST https://ticketing.dev/api/orders
 [tickets-depl-7b8c654ffb-fmvt6 tickets] Event published to subject ticket:updated
 
 
+restart minikube:
+1. minikube delete
+2. minikube start
+3. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+4. Set the JWT as a secret
+5. skaffold dev
+
+TODO:
+[tickets-depl-699dd5879-4kwbm tickets] Event published to subject ticket:created
+[orders-depl-8c8cd596c-4qgm2 orders] Message received: ticket:created / orders-service
+[tickets-depl-699dd5879-4kwbm tickets] Message received: order:created / tickets-service
+[expiration-depl-b57874dd4-htckm expiration] Message received: order:created / expiration-service
+[expiration-depl-b57874dd4-htckm expiration] Waiting this many milliseconds to process the job:  59994
+[orders-depl-8c8cd596c-4qgm2 orders] Event published to subject order:created
+[tickets-depl-699dd5879-4kwbm tickets] Event published to subject ticket:updated
+[orders-depl-8c8cd596c-4qgm2 orders] Message received: ticket:updated / orders-service
+[expiration-depl-b57874dd4-htckm expiration] (node:24) UnhandledPromiseRejectionWarning: Error: stan: publish ack timeout
+[expiration-depl-b57874dd4-htckm expiration]     at Timeout.<anonymous> (/app/node_modules/node-nats-streaming/lib/stan.js:603:18)
+[expiration-depl-b57874dd4-htckm expiration]     at listOnTimeout (internal/timers.js:551:17)
+[expiration-depl-b57874dd4-htckm expiration]     at processTimers (internal/timers.js:494:7)
+[expiration-depl-b57874dd4-htckm expiration] (Use `node --trace-warnings ...` to show where the warning was created)
+[expiration-depl-b57874dd4-htckm expiration] (node:24) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+[expiration-depl-b57874dd4-htckm expiration] (node:24) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+
 
