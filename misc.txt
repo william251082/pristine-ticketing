@@ -182,4 +182,14 @@ POST https://ticketing.dev/api/orders
     "ticketId": "5f267de95757af0018ddf45b"
 }
 
+[tickets-depl-7b8c654ffb-fmvt6 tickets] Event published to subject ticket:created
+[orders-depl-5755694bf7-9v7sx orders] Message received: ticket:created / orders-service
+[orders-depl-5755694bf7-9v7sx orders] Event published to subject order:created
+[tickets-depl-7b8c654ffb-fmvt6 tickets] Message received: order:created / tickets-service
+[expiration-depl-56b4bd57b9-2nthb expiration] Message received: order:created / expiration-service
+[expiration-depl-56b4bd57b9-2nthb expiration] Waiting this many milliseconds to process the job:  59983
+[orders-depl-5755694bf7-9v7sx orders] Message received: ticket:updated / orders-service
+[tickets-depl-7b8c654ffb-fmvt6 tickets] Event published to subject ticket:updated
+
+
 

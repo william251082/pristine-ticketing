@@ -1,5 +1,5 @@
-import {OrderCreatedEvent, Publisher, Subjects} from "@iceshoptickets/common";
+import {ExpirationCompleteEvent, Publisher, Subjects} from "@iceshoptickets/common";
 
-export class OrderCreatedPublisher extends Publisher<OrderCreatedEvent> {
-    subject: Subjects.OrderCreated = Subjects.OrderCreated;
+export class ExpirationCompletePublisher extends Publisher<ExpirationCompleteEvent> {
+    subject: Subjects.ExpirationComplete = Subjects.ExpirationComplete;
 }
