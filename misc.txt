@@ -327,3 +327,14 @@ fake visa credit card
 4242424242424242
 
 https://docs.github.com/en/actions
+
+
+TODO Creating a Hosted Cluster
+install https://github.com/digitalocean/doctl
+payments$ doctl auth init
+payments$ doctl kubenetes cluster kubeconfig save ticketing
+payments$ kubectl get nodes
+payments$ kubectl config view
+payments$ kubectl config use-context <context_name>
+payments$ kubectl get nodes
+payments$ kubectl get pods
