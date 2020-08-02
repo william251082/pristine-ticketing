@@ -216,4 +216,41 @@ TODO:
 [expiration-depl-b57874dd4-htckm expiration] (node:24) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
 [expiration-depl-b57874dd4-htckm expiration] (node:24) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 
+TODO: DONE
+[orders-depl-5654d968df-4xrjc orders] Listening on port 3000, auth
+[orders-depl-5654d968df-4xrjc orders] Connected NATS
+[orders-depl-5654d968df-4xrjc orders] Connected to Mongodb
+[orders-depl-5654d968df-4xrjc orders] Message received: ticket:created / orders-service
+[tickets-depl-75d6488d5f-m4j4c tickets] Event published to subject ticket:created
+[orders-depl-5654d968df-4xrjc orders] Event published to subject order:created
+[tickets-depl-75d6488d5f-m4j4c tickets] Message received: order:created / tickets-service
+[expiration-depl-645b8db6f8-kb8jb expiration] Message received: order:created / expiration-service
+[orders-depl-5654d968df-4xrjc orders] Message received: ticket:updated / orders-service
+[expiration-depl-645b8db6f8-kb8jb expiration] Waiting this many milliseconds to process the job:  59946
+[tickets-depl-75d6488d5f-m4j4c tickets] Event published to subject ticket:updated
+[expiration-depl-645b8db6f8-kb8jb expiration] Event published to subject expiration:complete
+
+
+TEST
+make new ticket
+POST the ticket id on /api/orders
+[orders-depl-846fcc5b99-6tj4p orders] Message received: expiration:complete / orders-service
+[tickets-depl-74957d868b-cp6j7 tickets] Message received: order:cancelled / tickets-service
+[orders-depl-846fcc5b99-6tj4p orders] Event published to subject order:cancelled
+[orders-depl-846fcc5b99-6tj4p orders] Message received: ticket:updated / orders-service
+[tickets-depl-74957d868b-cp6j7 tickets] Event published to subject ticket:updated
+[tickets-depl-74957d868b-cp6j7 tickets] Event published to subject ticket:created
+[orders-depl-846fcc5b99-6tj4p orders] Message received: ticket:created / orders-service
+[tickets-depl-74957d868b-cp6j7 tickets] Message received: order:created / tickets-service
+[expiration-depl-79b58d884f-bxcsq expiration] Message received: order:created / expiration-service
+[orders-depl-846fcc5b99-6tj4p orders] Event published to subject order:created
+[orders-depl-846fcc5b99-6tj4p orders] Message received: expiration:complete / orders-service
+[expiration-depl-79b58d884f-bxcsq expiration] Waiting this many milliseconds to process the job:  59992
+[expiration-depl-79b58d884f-bxcsq expiration] Event published to subject expiration:complete
+[tickets-depl-74957d868b-cp6j7 tickets] Event published to subject ticket:updated
+[orders-depl-846fcc5b99-6tj4p orders] Message received: ticket:updated / orders-service
+[tickets-depl-74957d868b-cp6j7 tickets] Message received: order:cancelled / tickets-service
+[orders-depl-846fcc5b99-6tj4p orders] Event published to subject order:cancelled
+[orders-depl-846fcc5b99-6tj4p orders] Message received: ticket:updated / orders-service
+[tickets-depl-74957d868b-cp6j7 tickets] Event published to subject ticket:updated
 
