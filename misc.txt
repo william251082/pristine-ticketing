@@ -256,3 +256,5 @@ POST the ticket id on /api/orders
 
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ docker build -t iceshop/payments .
 iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ docker push iceshop/payments
+
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ npm install mongoose-update-if-current
