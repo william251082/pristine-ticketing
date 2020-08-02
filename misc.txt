@@ -169,5 +169,17 @@ docker push iceshop/expiration
 Manually restart pod:
 kubectl delete pod <pod_name>
 
+Testing Job Processing
+on postman
+GET https://ticketing.dev/api/users/currentuser
+POST https://ticketing.dev/api/tickets
+{
+    "title": "concert",
+    "price": 908
+}
+POST https://ticketing.dev/api/orders
+{
+    "ticketId": "5f267de95757af0018ddf45b"
+}
 
 
