@@ -254,3 +254,5 @@ POST the ticket id on /api/orders
 [orders-depl-846fcc5b99-6tj4p orders] Message received: ticket:updated / orders-service
 [tickets-depl-74957d868b-cp6j7 tickets] Event published to subject ticket:updated
 
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ docker build -t iceshop/payments .
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing/payments$ docker push iceshop/payments
