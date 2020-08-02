@@ -314,3 +314,10 @@ POST https://ticketing.dev/api/payments
 [expiration-depl-5987b9d7f-k9ww5 expiration] Connected to NATS
 [expiration-depl-5987b9d7f-k9ww5 expiration] Message received: order:created / expiration-service
 [expiration-depl-5987b9d7f-k9ww5 expiration] Waiting this many milliseconds to process the job:  59192
+
+
+service info:
+iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing$ kubectl describe service ingress-nginx-controller -n ingress-nginx
+
+USE HTTPS IN TESTING CLIENT
+https://ticketing.dev/api/users/currentuser
