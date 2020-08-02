@@ -321,3 +321,7 @@ iceshop@iceshop-X580VD:~/Sites/microservicests/ticketing$ kubectl describe servi
 
 USE HTTPS IN TESTING CLIENT
 https://ticketing.dev/api/users/currentuser
+
+
+fake visa credit card
+4242424242424242
