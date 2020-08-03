@@ -197,6 +197,10 @@ restart minikube:
 2. minikube start
 3. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
 4. Set the JWT as a secret
+    kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+    kubectl get secrets
+    kubectl describe pods <name_of_pod>
+    kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 5. skaffold dev
 
 TODO:
