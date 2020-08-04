@@ -201,7 +201,9 @@ restart minikube:
     kubectl get secrets
     kubectl describe pods <name_of_pod>
     kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
-5. skaffold dev
+5. kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<stripe_secret_key>
+    kubectl get secrets
+6. skaffold dev
 
 TODO:
 [tickets-depl-699dd5879-4kwbm tickets] Event published to subject ticket:created
@@ -342,3 +344,12 @@ payments$ kubectl config view
 payments$ kubectl config use-context <context_name>
 payments$ kubectl get nodes
 payments$ kubectl get pods
+
+skaffold dev --status-check=false
+
+https://ticketing.dev/
+
+kubectl get namespaces
+kubectl get services -n <namespace>
+baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local'
+baseURL: 'http://<name_of_service>.<namespace>.svc.cluster.local'
