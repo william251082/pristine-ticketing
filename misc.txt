@@ -389,3 +389,10 @@ helm install my-release ingress-nginx/ingress-nginx
 
 upgrading cluster:
 gcloud container clusters upgrade  YOUR_CLUSTER_NAME --master --cluster-version 1.16
+
+
+helm install \
+  cert-manager \
+  --namespace cert-manager \
+  --version v0.11.0 \
+  jetstack/cert-manager

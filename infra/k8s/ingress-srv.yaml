@@ -5,9 +5,17 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: 'false'
 spec:
+  tls:
+    - hosts:
+      - guitarahub.com
+      - www.guitarahub.com
+      secretName: guitarahub.com
   rules:
-    - host: ticketing.dev
+    - host: guitarahub.com
       http:
         paths:
           - path: /api/payments/?(.*)
@@ -30,3 +38,26 @@ spec:
             backend:
               serviceName: client-srv
               servicePort: 3000
+    - host: www.guitarahub.com
+      http:
+        paths:
+        - path: /api/payments/?(.*)
+          backend:
+            serviceName: payments-srv
+            servicePort: 3000
+        - path: /api/users/?(.*)
+          backend:
+            serviceName: auth-srv
+            servicePort: 3000
+        - path: /api/tickets/?(.*)
+          backend:
+            serviceName: tickets-srv
+            servicePort: 3000
+        - path: /api/orders/?(.*)
+          backend:
+            serviceName: orders-srv
+            servicePort: 3000
+        - path: /?(.*)
+          backend:
+            serviceName: client-srv
+            servicePort: 3000
