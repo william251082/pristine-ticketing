@@ -353,3 +353,25 @@ kubectl get namespaces
 kubectl get services -n <namespace>
 baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local'
 baseURL: 'http://<name_of_service>.<namespace>.svc.cluster.local'
+
+mac screenshot shift-command-4
+Leveraging google cloud
+1. Sign up to google cloud
+2. Initialize a project
+3. Initialize google cloud sdk
+4. gcloud auth login --no-launch-browser
+5. gcloud config set project pristine-ticketing-dev
+6. <cluster name> - pristine-ticketing-dev
+7. gcloud container clusters get-credentials pristine-ticketing-dev
+8. select the cluster on docker desktop
+9. Change skaffold and depl yml files
+10. Make sure kubernetes is in gke, not in docker desktop
+11. run kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.42.0/deploy/static/provider/cloud/deploy.yaml
+12. run kubectl create clusterrolebinding cluster-admin-binding \
+          --clusterrole cluster-admin \
+          --user $(gcloud config get-value account)
+13. run kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.42.0/deploy/static/provider/cloud/deploy.yaml
+14. update google cloud load balancer id
+15. On sidebar Networking > Network Services > Load Balancing
+16. get the ip address of the load balancer TCP IP and update /etc/hosts
+17. run skaffold dev

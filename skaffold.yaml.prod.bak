@@ -5,12 +5,10 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-#  local:
-#    push: false
-  googleCloudBuild:
-    projectId: pristine-ticketing-dev
+  local:
+    push: false
   artifacts:
-    - image: us.gcr.io/pristine-ticketing-dev/auth
+    - image: iceshop/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -18,7 +16,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/pristine-ticketing-dev/client
+    - image: iceshop/client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -26,7 +24,7 @@ build:
         manual:
         - src: '**/*.js'
           dest: .
-    - image: us.gcr.io/pristine-ticketing-dev/tickets
+    - image: iceshop/tickets
       context: tickets
       docker:
         dockerfile: Dockerfile
@@ -34,7 +32,7 @@ build:
         manual:
         - src: 'src/**/*.ts'
           dest: .
-    - image: us.gcr.io/pristine-ticketing-dev/orders
+    - image: iceshop/orders
       context: orders
       docker:
         dockerfile: Dockerfile
@@ -42,7 +40,7 @@ build:
         manual:
         - src: 'src/**/*.ts'
           dest: .
-    - image: us.gcr.io/pristine-ticketing-dev/expiration
+    - image: iceshop/expiration
       context: expiration
       docker:
         dockerfile: Dockerfile
@@ -50,7 +48,7 @@ build:
         manual:
         - src: 'src/**/*.ts'
           dest: .
-    - image: us.gcr.io/pristine-ticketing-dev/payments
+    - image: iceshop/payments
       context: payments
       docker:
         dockerfile: Dockerfile
