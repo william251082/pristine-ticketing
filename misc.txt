@@ -353,3 +353,39 @@ kubectl get namespaces
 kubectl get services -n <namespace>
 baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local'
 baseURL: 'http://<name_of_service>.<namespace>.svc.cluster.local'
+
+
+ruby for travis
+docker run -it -v $(pwd):/app ruby:2.4 sh
+check if you app is in the volume
+cd app
+cd ..
+gem install travis
+travis login --github-token
+pristine-ticketing-dev-f780eaf89697.json
+encrypt file:
+travis encrypt-file pristine-ticketing-dev-f780eaf89697.json -r william251082/pristine-ticketing
+put on .travis.yml
+openssl aes-256-cbc -K $encrypted_99660e47f3e3_key -iv $encrypted_99660e47f3e3_iv -in pristine-ticketing-dev-f780eaf89697.json.enc -out pristine-ticketing-dev-f780eaf89697.json -d
+delete the original unencrypted json file
+
+get recent commit: $GIT_SHA
+git rev-parse HEAD
+
+add secret to google cloud console
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=sk_test_51I3gYKEmeZsaV8s1kK8a5EqO2ym9A7EmFRveRTIb76s655BUQLuLqxCuGf2fkLjzDy4nRrLDdWFsuCSOf9quJU9j009GQ9lscX
+
+get the helmetv3
+on google cloud console run:
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+install ingress nginx
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm install my-release ingress-nginx/ingress-nginx
+
+
+upgrading cluster:
+gcloud container clusters upgrade  YOUR_CLUSTER_NAME --master --cluster-version 1.16
