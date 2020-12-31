@@ -353,3 +353,39 @@ kubectl get namespaces
 kubectl get services -n <namespace>
 baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local'
 baseURL: 'http://<name_of_service>.<namespace>.svc.cluster.local'
+
+install doctl
+generate dg token
+doctl auth init
+doctl kubenetes cluster kubeconfig save pristine-ticketing
+kubectl get pods
+kubectl get nodes
+kubectl config view
+find:
+- context:
+    cluster: do-ams3-pristine-ticketing
+    user: do-ams3-pristine-ticketing-admin
+  name: do-ams3-pristine-ticketing
+
+kubectl config use-context docker-desktop
+
+create secrets manually in dg
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=50t8yh420598
+kubectl create secret generic jwt-secret --from-literal=STRIPE_KEY=
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.43.0/deploy/static/provider/do/deploy.yaml
+kubectl get pods
+
+
+I thought this might help someone to know how the pods/instances can be scaled(increased or decreased) based on demand. This helps when you are running multiple instance of the pods in production and based on the demand you can scale them.
+Follow below link to install Kubernetes Dashboard:
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#deploying-the-dashboard-ui
+Use below guide to create Bearer Token for Service Account and use it to login and monitor and configure cluster:
+https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+I tried installed and configured in my local cluster and it worked.
+
+
+
+I solved this problem by adding TLS cert to Nginx-Ingress (as you suggested in video 489).
+ 1. I followed this guide by DigitalOcean on "How to Set Up an Nginx Ingress with Cert-Manager on DigitalOcean Kubernetes"
+ 2. Then, changed the cookie-session "secure" prop back to "true"
+
