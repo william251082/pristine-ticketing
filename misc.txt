@@ -389,3 +389,14 @@ I solved this problem by adding TLS cert to Nginx-Ingress (as you suggested in v
  1. I followed this guide by DigitalOcean on "How to Set Up an Nginx Ingress with Cert-Manager on DigitalOcean Kubernetes"
  2. Then, changed the cookie-session "secure" prop back to "true"
 
+
+https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
+ingress nginx
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml
+kubectl get pods --namespace=ingress-nginx
+
+
+prune docker
+https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/
+
+docker build -t pristinewebdev/auth .
