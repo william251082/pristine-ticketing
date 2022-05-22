@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
 import {body, validationResult} from "express-validator";
+import { DatabaseConnectionError } from '../middlewares/database-connection-error';
+import { RequestValidationError } from '../middlewares/request-validation-error';
 // import jwt from 'jsonwebtoken';
 //
 // import {User} from "../model/user";
@@ -61,10 +63,12 @@ const reqBody = [
 router.post('/api/users/signup', reqBody, (req: Request, res: Response ) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
-        return res.status(400).send(errors.array())
+        console.log(errors)
+        throw new RequestValidationError(errors.array())
     }
     const { email, password } = req.body
     console.log('Creating a user...')
+    throw new DatabaseConnectionError()
     res.send({})
 });
 

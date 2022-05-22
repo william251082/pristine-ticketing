@@ -400,3 +400,6 @@ prune docker
 https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/
 
 docker build -t pristinewebdev/auth .
+
+make sure you're using docker desktop
+kubectl config view
