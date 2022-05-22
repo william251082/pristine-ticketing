@@ -4,7 +4,7 @@ import { BadRequestError } from '../middlewares/bad-request-error';
 import { DatabaseConnectionError } from '../middlewares/database-connection-error';
 import { RequestValidationError } from '../middlewares/request-validation-error';
 import { User } from '../model/user';
-// import jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 //
 // import {User} from "../model/user";
 // import {BadRequestError} from "@iceshoptickets/common";
@@ -74,6 +74,16 @@ router.post('/api/users/signup', reqBody, async (req: Request, res: Response ) =
     }
     const user = User.build({ email, password })
     await user.save()
+
+    // Generate jwt
+    const userJwt = jwt.sign({
+        id: user.id,
+        email: user.email
+    }, 'asdf');
+    // Store it on session object
+    req.session = {
+        jwt: userJwt
+    };
     res.status(201).send(user)
 });
 
