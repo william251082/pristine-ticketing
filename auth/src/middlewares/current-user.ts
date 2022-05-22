@@ -9,7 +9,7 @@ interface UserPayload {
 declare global {
     namespace Express {
         interface Request {
-            currentUser?: UserPayload;
+            currentUser?: UserPayload
         }
     }
 }
@@ -27,12 +27,12 @@ export const currentUser = (
         const payload = jwt.verify(
             req.session.jwt,
             process.env.JWT_KEY!
-        ) as UserPayload;
+        ) as UserPayload
 
-        req.currentUser = payload;
+        req.currentUser = payload
     } catch (err) {
         res.send({currentUser: null})
     }
 
-  next();
-};
+  next()
+}
