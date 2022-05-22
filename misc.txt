@@ -423,3 +423,8 @@ imperative command
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 kubectl get pods
 kubectl describe pods <name_of_pod>
+
+docker build -t pristinewebdev/auth .
+docker push pristinewebdev/auth
+docker build -t pristinewebdev/client .
+docker push pristinewebdev/client

@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import useRequest from '../../hooks/use-request';
+import useRequest from '@hooks/use-request';
 
 const TicketShow = ({ ticket }) => {
   const { doRequest, errors } = useRequest({

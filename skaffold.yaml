@@ -17,14 +17,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-#    - image: iceshop/client
-#      context: client
-#      docker:
-#        dockerfile: Dockerfile
-#      sync:
-#        manual:
-#        - src: '**/*.js'
-#          dest: .
+    - image: pristinewebdev/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+        - src: '**/*.ts'
+          dest: .
 #    - image: iceshop/tickets
 #      context: tickets
 #      docker:

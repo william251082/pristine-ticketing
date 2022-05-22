@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import Router from 'next/router';
-import useRequest from '../../hooks/use-request';
+import useRequest from '@hooks/use-request';
 
 const OrderShow = ({ order, currentUser }) => {
   const [timeLeft, setTimeLeft] = useState(0);
@@ -16,7 +16,8 @@ const OrderShow = ({ order, currentUser }) => {
 
   useEffect(() => {
     const findTimeLeft = () => {
-      const msLeft = new Date(order.expiresAt) - new Date();
+      // const msLeft = new Date(order.expiresAt) - new Date();
+      const msLeft = 0
       setTimeLeft(Math.round(msLeft / 1000));
     };
 
