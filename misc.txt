@@ -407,3 +407,13 @@ kubectl get pods
 
 common errors response structure
 {errors: {message: string, field?: string}[]}
+
+auth strategy:
+the services should know expiration of jwt token
+auth service should publish an event userBanned on all other services' in-memory cache to prevent any window of unexpired token
+text message based 2FA implementation:
+- When a user attempts to login, generate a random 6-digit number and store it in the auth service's database along the user model
+- Emit an event with the users phone number + the 6-digit number
+- A new service called 'text service' or something similar should receive that event and send a text to the user with the 6-digit number
+- User receives the text and enters the 6-digit number, sending a second request to the auth service
+- Auth service make sure the correct 6-digit number was entered. If it was, the user should then be authenticated.
