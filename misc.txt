@@ -417,3 +417,9 @@ text message based 2FA implementation:
 - A new service called 'text service' or something similar should receive that event and send a text to the user with the 6-digit number
 - User receives the text and enters the 6-digit number, sending a second request to the auth service
 - Auth service make sure the correct 6-digit number was entered. If it was, the user should then be authenticated.
+
+decode the cookie value to see the jwt
+imperative command
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+kubectl get pods
+kubectl describe pods <name_of_pod>
