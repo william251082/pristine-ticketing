@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
 import {body, validationResult} from "express-validator";
-import { BadRequestError } from '../middlewares/bad-request-error';
-import { DatabaseConnectionError } from '../middlewares/database-connection-error';
-import { RequestValidationError } from '../middlewares/request-validation-error';
 import { User } from '../model/user';
 import jwt from 'jsonwebtoken';
+import { RequestValidationError } from '../errors/request-validation-error';
+import { BadRequestError } from '../errors/bad-request-error';
+import { validateRequest } from '../middlewares/validate-request';
 //
 // import {User} from "../model/user";
 // import {BadRequestError} from "@iceshoptickets/common";
@@ -62,7 +62,7 @@ const reqBody = [
         .withMessage('Password must be between 4 and 20 characters')
 ]
 
-router.post('/api/users/signup', reqBody, async (req: Request, res: Response ) => {
+router.post('/api/users/signup', reqBody, validateRequest, async (req: Request, res: Response ) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         throw new RequestValidationError(errors.array())
