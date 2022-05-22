@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import {body, validationResult} from "express-validator";
+import { BadRequestError } from '../middlewares/bad-request-error';
 import { DatabaseConnectionError } from '../middlewares/database-connection-error';
 import { RequestValidationError } from '../middlewares/request-validation-error';
 import { User } from '../model/user';
@@ -69,15 +70,11 @@ router.post('/api/users/signup', reqBody, async (req: Request, res: Response ) =
     const { email, password } = req.body
     const existingUser = await User.findOne({ email })
     if (existingUser) {
-        console.log('Email in use')
-        return res.send({})
+        throw new BadRequestError('Email in use');
     }
-    console.log('Creating a user...')
     const user = User.build({ email, password })
     await user.save()
     res.status(201).send(user)
-    throw new DatabaseConnectionError()
-    res.send({})
 });
 
 export { router as signupRouter }

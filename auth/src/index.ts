@@ -35,9 +35,6 @@ app.use(currentUserRouter)
 app.use(signinRouter)
 app.use(signupRouter)
 app.use(signoutRouter)
-// app.get('*', async (req: Request, res: Response, next: NextFunction) => {
-//     next(new NotFoundError())
-// })
 app.get('*', async (req: Request, res: Response, next: NextFunction) => {
     throw new NotFoundError()
 })
