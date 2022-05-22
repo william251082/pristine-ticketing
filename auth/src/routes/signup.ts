@@ -63,7 +63,6 @@ const reqBody = [
 router.post('/api/users/signup', reqBody, (req: Request, res: Response ) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
-        console.log(errors)
         throw new RequestValidationError(errors.array())
     }
     const { email, password } = req.body

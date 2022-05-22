@@ -403,3 +403,6 @@ docker build -t pristinewebdev/auth .
 
 make sure you're using docker desktop
 kubectl config view
+
+common errors response structure
+{errors: {message: string, field?: string}[]}
