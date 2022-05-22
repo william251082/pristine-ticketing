@@ -14,23 +14,20 @@ import { NextFunction } from "express";
 
 const start = async () => {
     console.log('Starting up...')
-    if (!process.env.JWT_KEY) {
-        throw new Error('JWT_KEY must be defined');
-    }
-    if (!process.env.MONGO_URI) {
-        throw new Error('MONGO_URI must be defined');
-    }
+    // if (!process.env.JWT_KEY) {
+    //     throw new Error('JWT_KEY must be defined');
+    // }
+    // if (!process.env.MONGO_URI) {
+    //     throw new Error('MONGO_URI must be defined');
+    // }
 
-  // try {
-  //     await mongoose.connect(process.env.MONGO_URI, {
-  //       useNewUrlParser: true,
-  //       useUnifiedTopology: true,
-  //       useCreateIndex: true
-  //   });
-  //     console.log('Connected to Mongodb');
-  // } catch (err) {
-  //     console.error(err)
-  // }
+  try {
+      // await mongoose.connect(process.env.MONGO_URI, {
+      await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+      console.log('Connected to Mongodb');
+  } catch (err) {
+      console.error(err)
+  }
 };
 const app = express()
 app.use(json())
@@ -45,9 +42,10 @@ app.get('*', async (req: Request, res: Response, next: NextFunction) => {
     throw new NotFoundError()
 })
 app.use(errorHandler)
+start();
 app.listen(3000, () => {
     console.log('Listening on port 3000, auth')
 });
 
 
-// start();
+

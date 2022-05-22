@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import {body, validationResult} from "express-validator";
 import { DatabaseConnectionError } from '../middlewares/database-connection-error';
 import { RequestValidationError } from '../middlewares/request-validation-error';
+import { User } from '../model/user';
 // import jwt from 'jsonwebtoken';
 //
 // import {User} from "../model/user";
@@ -60,13 +61,21 @@ const reqBody = [
         .withMessage('Password must be between 4 and 20 characters')
 ]
 
-router.post('/api/users/signup', reqBody, (req: Request, res: Response ) => {
+router.post('/api/users/signup', reqBody, async (req: Request, res: Response ) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         throw new RequestValidationError(errors.array())
     }
     const { email, password } = req.body
+    const existingUser = await User.findOne({ email })
+    if (existingUser) {
+        console.log('Email in use')
+        return res.send({})
+    }
     console.log('Creating a user...')
+    const user = User.build({ email, password })
+    await user.save()
+    res.status(201).send(user)
     throw new DatabaseConnectionError()
     res.send({})
 });
