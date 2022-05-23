@@ -25,15 +25,15 @@ build:
         manual:
         - src: '**/*.ts'
           dest: .
-#    - image: iceshop/tickets
-#      context: tickets
-#      docker:
-#        dockerfile: Dockerfile
-#      sync:
-#        manual:
-#        - src: 'src/**/*.ts'
-#          dest: .
-#    - image: iceshop/orders
+    - image: pristinewebdev/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+        - src: 'src/**/*.ts'
+          dest: .
+#    - image: pristinewebdev/orders
 #      context: orders
 #      docker:
 #        dockerfile: Dockerfile
@@ -41,7 +41,7 @@ build:
 #        manual:
 #        - src: 'src/**/*.ts'
 #          dest: .
-#    - image: iceshop/expiration
+#    - image: pristinewebdev/expiration
 #      context: expiration
 #      docker:
 #        dockerfile: Dockerfile
@@ -49,7 +49,7 @@ build:
 #        manual:
 #        - src: 'src/**/*.ts'
 #          dest: .
-#    - image: iceshop/payments
+#    - image: pristinewebdev/payments
 #      context: payments
 #      docker:
 #        dockerfile: Dockerfile

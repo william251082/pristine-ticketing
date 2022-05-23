@@ -428,6 +428,8 @@ docker build -t pristinewebdev/auth .
 docker push pristinewebdev/auth
 docker build -t pristinewebdev/client .
 docker push pristinewebdev/client
+docker build -t pristinewebdev/tickets .
+docker push pristinewebdev/tickets
 
 cross namespace communication:
 kubectl get namespace
