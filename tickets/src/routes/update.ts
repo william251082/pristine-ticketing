@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import {BadRequestError, NotAuthorizedError, NotFoundError, requireAuth, validateRequest} from "@iceshoptickets/common";
+import {BadRequestError, NotAuthorizedError, NotFoundError, requireAuth, validateRequest} from "@pristinetickets/common";
 import {Ticket} from "../models/ticket";
 import {body} from "express-validator";
 import {TicketUpdatedPublisher} from "../events/publishers/ticket-updated-publisher";

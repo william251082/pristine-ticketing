@@ -1,10 +1,10 @@
 import request from 'supertest';
 import {app} from "../../app";
 
-const createTicket = () => {
+const createTicket = async () => {
     return request(app)
         .post('/api/tickets')
-        .set('Cookie', global.signin())
+        .set('Cookie', await global.signin())
         .send({
             title: 'rwegtdfb',
             price: 20

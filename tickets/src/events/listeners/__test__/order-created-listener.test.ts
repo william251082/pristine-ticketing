@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {OrderCreatedEvent, OrderStatus} from "@iceshoptickets/common";
+import {OrderCreatedEvent, OrderStatus} from "@pristinetickets/common";
 import {OrderCreatedListener} from "../order-created-listener";
 import {natsWrapper} from "../../../nats-wrapper";
 import {Ticket} from "../../../models/ticket";

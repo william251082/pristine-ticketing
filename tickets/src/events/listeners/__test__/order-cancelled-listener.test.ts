@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {OrderCancelledEvent} from "@iceshoptickets/common";
+import {OrderCancelledEvent} from "@pristinetickets/common";
 import {natsWrapper} from "../../../nats-wrapper";
 import {Ticket} from "../../../models/ticket";
 import {Message} from 'node-nats-streaming';

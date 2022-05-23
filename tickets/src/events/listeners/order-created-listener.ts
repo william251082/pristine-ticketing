@@ -1,4 +1,4 @@
-import {Listener, OrderCreatedEvent, Subjects} from "@iceshoptickets/common";
+import {Listener, OrderCreatedEvent, Subjects} from "@pristinetickets/common";
 import {queueGroupName} from "./queue-group-name";
 import {Message} from 'node-nats-streaming';
 import {Ticket} from "../../models/ticket";

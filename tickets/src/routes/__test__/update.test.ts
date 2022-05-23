@@ -8,7 +8,7 @@ it('returns a 404 if the provided is not found', async () => {
     const id = new mongoose.Types.ObjectId().toHexString();
     await request(app)
         .put(`/api/tickets/${id}`)
-        .set('Cookie', global.signin())
+        .set('Cookie', await global.signin())
         .send({
             title: 'gvhbj',
             price: 20
@@ -17,7 +17,7 @@ it('returns a 404 if the provided is not found', async () => {
 });
 
 it('returns a 401 if user is not authenticated', async () => {
-    const id = new mongoose.Types.ObjectId().toHexString();
+    const id = await new mongoose.Types.ObjectId().toHexString();
     await request(app)
         .put(`/api/tickets/${id}`)
         .send({
@@ -30,7 +30,7 @@ it('returns a 401 if user is not authenticated', async () => {
 it('returns a 401 if user does not own the ticket', async () => {
     const response = await request(app)
         .post('/api/tickets')
-        .set('Cookie', global.signin())
+        .set('Cookie', await global.signin())
         .send({
             title: 'gvhbj',
             price: 20
@@ -49,14 +49,14 @@ it('returns a 400 if the user provides an invalid title or price', async () => {
     const cookie = global.signin();
     const response = await request(app)
         .post('/api/tickets')
-        .set('Cookie', cookie)
+        .set('Cookie', await cookie)
         .send({
             title: 'gvhbj',
             price: 20
         });
     await request(app)
         .put(`/api/tickets/${response.body.id}`)
-        .set('Cookie', cookie)
+        .set('Cookie', await cookie)
         .send({
             title: '',
             price: 200
@@ -64,7 +64,7 @@ it('returns a 400 if the user provides an invalid title or price', async () => {
         .expect(400);
     await request(app)
         .put(`/api/tickets/${response.body.id}`)
-        .set('Cookie', cookie)
+        .set('Cookie', await cookie)
         .send({
             title: 'gshdjuf',
             price: -200
@@ -76,14 +76,14 @@ it('updates the ticket provided valid inputs', async () => {
     const cookie = global.signin();
     const response = await request(app)
         .post('/api/tickets')
-        .set('Cookie', cookie)
+        .set('Cookie', await cookie)
         .send({
             title: 'gvhbj',
             price: 20
         });
     await request(app)
         .put(`/api/tickets/${response.body.id}`)
-        .set('Cookie', cookie)
+        .set('Cookie', await cookie)
         .send({
             title: 'new title',
             price: 100
@@ -102,14 +102,14 @@ it ('publishes an event', async() => {
     const cookie = global.signin();
     const response = await request(app)
         .post('/api/tickets')
-        .set('Cookie', cookie)
+        .set('Cookie', await cookie)
         .send({
             title: 'gvhbj',
             price: 20
         });
     await request(app)
         .put(`/api/tickets/${response.body.id}`)
-        .set('Cookie', cookie)
+        .set('Cookie', await cookie)
         .send({
             title: 'new title',
             price: 100
@@ -124,7 +124,7 @@ it('rejects updates if the ticket is reserved', async () => {
 
     const response = await request(app)
         .post('/api/tickets')
-        .set('Cookie', cookie)
+        .set('Cookie', await cookie)
         .send({
             title: 'gvhbj',
             price: 20
@@ -136,7 +136,7 @@ it('rejects updates if the ticket is reserved', async () => {
 
     await request(app)
         .put(`/api/tickets/${response.body.id}`)
-        .set('Cookie', cookie)
+        .set('Cookie', await cookie)
         .send({
             title: 'new title',
             price: 100

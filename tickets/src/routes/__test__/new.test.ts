@@ -16,15 +16,14 @@ it('can only be accessed if user is signed in', async () => {
 it('returns a status other than 401 if user is signed in', async () => {
      const response = await request(app)
         .post('/api/tickets')
-        .set('Cookie', global.signin())
+        .set('Cookie', await global.signin())
         .send({});
-    // console.log('status', response.status)
     expect(response.status).not.toEqual(401);
 });
 it('returns an error if an invalid title is provided', async () => {
     await  request(app)
         .post('/api/tickets')
-        .set('Cookie', global.signin())
+        .set('Cookie', await global.signin())
         .send({
             title: '',
             price: -10,
@@ -34,7 +33,7 @@ it('returns an error if an invalid title is provided', async () => {
 it('returns an error if an invalid price is provided', async () => {
     await  request(app)
         .post('/api/tickets')
-        .set('Cookie', global.signin())
+        .set('Cookie', await global.signin())
         .send({
             title: 'valid title',
         })
@@ -51,7 +50,7 @@ it('creates a ticket with valid inputs', async () => {
 
     await  request(app)
         .post('/api/tickets')
-        .set('Cookie', global.signin())
+        .set('Cookie', await global.signin())
         .send({
             title,
             price: 1.00,
@@ -64,12 +63,12 @@ it('creates a ticket with valid inputs', async () => {
     expect(tickets[0].price).toEqual(1.00);
 });
 
-it ('publishes an event', async() => {
+it ('publishes an event', async () => {
     const title = 'valid title';
 
     await  request(app)
         .post('/api/tickets')
-        .set('Cookie', global.signin())
+        .set('Cookie', await global.signin())
         .send({
             title,
             price: 1.00,
