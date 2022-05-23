@@ -21,14 +21,14 @@ const TicketShow = ({ ticket }) => {
         Purchase
       </button>
     </div>
-  );
-};
+  )
+}
 
 TicketShow.getInitialProps = async (context, client) => {
-  const { ticketId } = context.query;
-  const { data } = await client.get(`/api/tickets/${ticketId}`);
+  const { ticketId } = context.query
+  const { data } = await client.get(`/api/tickets/${ticketId}`)
 
-  return { ticket: data };
+  return { ticket: data }
 };
 
-export default TicketShow;
+export default TicketShow

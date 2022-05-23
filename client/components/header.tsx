@@ -16,8 +16,8 @@ export default ({ currentUser }) => {
                         <a className="nav-link">{label}</a>
                     </Link>
                 </li>
-            );
-        });
+            )
+        })
     return (
         <nav className="navbar navbar-light bg-light">
             <Link href='/'>
@@ -29,5 +29,5 @@ export default ({ currentUser }) => {
                 </ul>
             </div>
         </nav>
-    );
+    )
 }

@@ -3,8 +3,8 @@ import useRequest from "@hooks/use-request";
 import Router from "next/router";
 
 export default () => {
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState(null)
+    const [password, setPassword] = useState('')
     const { doRequest, errors } = useRequest({
         url: '/api/users/signin',
         method: 'post',
@@ -15,8 +15,8 @@ export default () => {
     });
 
     const onSubmit = async event => {
-        event.preventDefault();
-        await doRequest();
+        event.preventDefault()
+        await doRequest()
     };
 
     return (
@@ -44,5 +44,5 @@ export default () => {
             <button className="btn btn-primary">Sign In</button>
         </form>
         </div>
-    );
-};
+    )
+}

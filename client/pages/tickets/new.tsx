@@ -3,8 +3,8 @@ import Router from 'next/router';
 import useRequest from '@hooks/use-request';
 
 const NewTicket = () => {
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
+  const [title, setTitle] = useState('')
+  const [price, setPrice] = useState('')
   const { doRequest, errors } = useRequest({
     url: '/api/tickets',
     method: 'post',
@@ -13,23 +13,23 @@ const NewTicket = () => {
       price,
     },
     onSuccess: () => Router.push('/'),
-  });
+  })
 
   const onSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    doRequest();
+    doRequest()
   };
 
   const onBlur = () => {
-    const value = parseFloat(price);
+    const value = parseFloat(price)
 
     if (isNaN(value)) {
-      return;
+      return
     }
 
-    setPrice(value.toFixed(2));
-  };
+    setPrice(value.toFixed(2))
+  }
 
   return (
     <div>
@@ -56,7 +56,7 @@ const NewTicket = () => {
         <button className="btn btn-primary">Submit</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default NewTicket;
+export default NewTicket

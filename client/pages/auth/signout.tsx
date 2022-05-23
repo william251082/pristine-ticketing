@@ -10,11 +10,11 @@ export default () => {
         onSuccess: () => {
             Router.push('/')
         }
-    });
+    })
 
     useEffect(() => {
-        doRequest();
-    }, []);
+        doRequest()
+    }, [])
 
     return (
         <div>

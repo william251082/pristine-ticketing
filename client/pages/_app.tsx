@@ -24,7 +24,7 @@ AppComponent.getInitialProps = async (appContext) => {
 //           appContext.ctx,
 //           client,
 //           data.currentUser
-//         );
+//         )
 //     }
 //
     return {

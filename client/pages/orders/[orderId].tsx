@@ -4,7 +4,7 @@ import Router from 'next/router';
 import useRequest from '@hooks/use-request';
 
 const OrderShow = ({ order, currentUser }) => {
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(0)
   const { doRequest, errors } = useRequest({
     url: '/api/payments',
     method: 'post',
@@ -12,25 +12,25 @@ const OrderShow = ({ order, currentUser }) => {
       orderId: order.id,
     },
     onSuccess: () => Router.push('/orders'),
-  });
+  })
 
   useEffect(() => {
     const findTimeLeft = () => {
       // const msLeft = new Date(order.expiresAt) - new Date();
       const msLeft = 0
-      setTimeLeft(Math.round(msLeft / 1000));
+      setTimeLeft(Math.round(msLeft / 1000))
     };
 
-    findTimeLeft();
-    const timerId = setInterval(findTimeLeft, 1000);
+    findTimeLeft()
+    const timerId = setInterval(findTimeLeft, 1000)
 
     return () => {
-      clearInterval(timerId);
+      clearInterval(timerId)
     };
-  }, [order]);
+  }, [order])
 
   if (timeLeft < 0) {
-    return <div>Order Expired</div>;
+    return <div>Order Expired</div>
   }
 
   return (
@@ -48,10 +48,10 @@ const OrderShow = ({ order, currentUser }) => {
 };
 
 OrderShow.getInitialProps = async (context, client, currentUser) => {
-  const { orderId } = context.query;
-  const { data } = await client.get(`/api/orders/${orderId}`);
+  const { orderId } = context.query
+  const { data } = await client.get(`/api/orders/${orderId}`)
 
-  return { order: data };
+  return { order: data }
 };
 
-export default OrderShow;
+export default OrderShow
