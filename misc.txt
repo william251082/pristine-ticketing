@@ -435,3 +435,5 @@ kubectl get services
 kubectl get services -n ingress-nginx
 http://nameofservice.namespace.svc.cluster.local
 http://ingress-nginx.ingress-nginx.svc.cluster.local
+
+npm update @pristinetickets/common
