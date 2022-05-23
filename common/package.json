@@ -1,5 +1,5 @@
 {
-  "name": "@iceshoptickets/common",
+  "name": "@pristinetickets/common",
   "version": "1.0.18",
   "description": "",
   "main": "./build/index.js",
