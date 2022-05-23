@@ -9,15 +9,16 @@ it('response with details about the current user', async () => {
         .set('Cookie', cookie)
         .send()
         .expect(200);
-    expect(response.body.email).toEqual('test@test.com');
+    
+    expect(response.body.currentUser.email).toEqual('test@test.com');
 });
 
 it('response with error if not authenticated', async () => {
     const response = await request(app)
         .get('/api/users/currentuser')
         .send()
-        .expect(401);
-    
-    expect(response.body.errors[0].message).toEqual('Not Authorized');
+        .expect(200);
+
+    expect(response.body.currentUser).toEqual(undefined);
 });
 
