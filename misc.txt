@@ -428,3 +428,10 @@ docker build -t pristinewebdev/auth .
 docker push pristinewebdev/auth
 docker build -t pristinewebdev/client .
 docker push pristinewebdev/client
+
+cross namespace communication:
+kubectl get namespace
+kubectl get services
+kubectl get services -n ingress-nginx
+http://nameofservice.namespace.svc.cluster.local
+http://ingress-nginx.ingress-nginx.svc.cluster.local

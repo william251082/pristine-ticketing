@@ -1,6 +1,7 @@
+import axios from 'axios';
 import Link from 'next/link';
 
-const LandingPage = ({ tickets, currentUser }) => {
+const LandingPage = ({ currentUser }) => {
   // const ticketList = tickets.map((ticket) => {
   //   return (
   //     <tr key={ticket.id}>
@@ -33,10 +34,10 @@ const LandingPage = ({ tickets, currentUser }) => {
 }
 
 LandingPage.getInitialProps = async (context, client, currentUser) => {
+    console.log('executed getInitialProps')
     // const { data } = await client.get('/api/tickets')
-
+    
   // return { tickets: data }
-  return { tickets: '' }
 };
 
 export default LandingPage
