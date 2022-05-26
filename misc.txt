@@ -444,3 +444,37 @@ npm update @pristinetickets/common
 access the shell inside a pod
 kubectl get pods
 kubectl exec -it <pod_name> sh
+
+port forwarding in k8s
+kubectl get pods
+kubectl port-forward <pod_name> 4222:4222
+then:
+nats-test git:(dev) ✗ npm run publish
+nats-test git:(dev) ✗ npm run listen
+refresh rs
+
+monitoring
+localhost:8222/streaming
+http://localhost:8222/streaming/channelsz?subs=1
+
+
+graceful shutdown
+process.on('SIGINT', () => { stan.close() });
+process.on('SIGTERM', () => { stan.close() });
+
+
+Core Concurrency Issues:
+- Listener can fail to process the event
+- One listener might run more quickly than the other
+- NATS might think a client is still alive when it is dead
+- We might receive the same event twice
+
+
+Solution:
+that won't work - run one copy of Account srv
+that won't work - figure out every possible error case and write code to handle it
+that won't work - share state between services of last event processed
+that won't work - last event processed tracked by resource id
+listener will be the one to set the seqId and lastSeqId
+Understand the service where it even comes from then add last_transaction_id field will solve concurrency issues.
+Per-user lock out.
