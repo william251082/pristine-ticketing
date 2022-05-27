@@ -478,3 +478,6 @@ that won't work - last event processed tracked by resource id
 listener will be the one to set the seqId and lastSeqId
 Understand the service where it even comes from then add last_transaction_id field will solve concurrency issues.
 Per-user lock out.
+
+test error handling on deleting nats pod
+kubectl delete pod <nats_pod_name>
