@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import {NotAuthorizedError, NotFoundError, requireAuth} from "@iceshoptickets/common";
+import {NotAuthorizedError, NotFoundError, requireAuth} from "@pristinetickets/common";
 import {Order} from "../models/order";
 
 const router = express.Router();

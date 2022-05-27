@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import {BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest} from "@iceshoptickets/common";
+import {BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest} from "@pristinetickets/common";
 import mongoose from "mongoose";
 import {body} from "express-validator";
 import {Ticket} from "../models/ticket";

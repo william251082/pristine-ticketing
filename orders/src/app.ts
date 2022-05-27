@@ -3,7 +3,7 @@ import 'express-async-errors'
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 
-import { errorHandler, NotFoundError, currentUser } from "@iceshoptickets/common";
+import { errorHandler, NotFoundError, currentUser } from "@pristinetickets/common";
 import {indexOrderRouter} from "./routes";
 import {newOrderRouter} from "./routes/new";
 import {showOrderRouter} from "./routes/show";

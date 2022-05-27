@@ -1,5 +1,5 @@
 import express, {NextFunction, Request, Response} from "express";
-import {requireAuth} from "@iceshoptickets/common";
+import {requireAuth} from "@pristinetickets/common";
 import {Order} from "../models/order";
 
 const router = express.Router();

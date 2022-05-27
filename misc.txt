@@ -430,6 +430,8 @@ docker build -t pristinewebdev/client .
 docker push pristinewebdev/client
 docker build -t pristinewebdev/tickets .
 docker push pristinewebdev/tickets
+docker build -t pristinewebdev/orders .
+docker push pristinewebdev/orders
 
 cross namespace communication:
 kubectl get namespace
@@ -481,3 +483,4 @@ Per-user lock out.
 
 test error handling on deleting nats pod
 kubectl delete pod <nats_pod_name>
+

@@ -4,7 +4,7 @@ import { ExpirationCompleteListener } from '../expiration-complete-listener';
 import { natsWrapper } from '../../../nats-wrapper';
 import { Order } from '../../../models/order';
 import { Ticket } from '../../../models/ticket';
-import {ExpirationCompleteEvent, OrderStatus} from "@iceshoptickets/common";
+import {ExpirationCompleteEvent, OrderStatus} from "@pristinetickets/common";
 
 const setup = async () => {
   const listener = new ExpirationCompleteListener(natsWrapper.client);

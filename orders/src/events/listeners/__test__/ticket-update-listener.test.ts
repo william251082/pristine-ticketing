@@ -1,5 +1,5 @@
 import {natsWrapper} from "../../../nats-wrapper";
-import {TicketUpdatedEvent} from "@iceshoptickets/common";
+import {TicketUpdatedEvent} from "@pristinetickets/common";
 import mongoose from "mongoose";
 import {Message} from 'node-nats-streaming';
 import {Ticket} from "../../../models/ticket";

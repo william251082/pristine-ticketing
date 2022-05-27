@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import {NotAuthorizedError, NotFoundError, OrderStatus, requireAuth} from "@iceshoptickets/common";
+import {NotAuthorizedError, NotFoundError, OrderStatus, requireAuth} from "@pristinetickets/common";
 import {Order} from "../models/order";
 import {OrderCancelledPublisher} from "../events/publishers/order-cancelled-publisher";
 import {natsWrapper} from "../nats-wrapper";

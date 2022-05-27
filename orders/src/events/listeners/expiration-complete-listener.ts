@@ -1,4 +1,4 @@
-import {ExpirationCompleteEvent, Listener, OrderStatus, Subjects} from "@iceshoptickets/common";
+import {ExpirationCompleteEvent, Listener, OrderStatus, Subjects} from "@pristinetickets/common";
 import {queueGroupName} from "./queue-group-name";
 import {Message} from "node-nats-streaming";
 import {Order} from "../../models/order";

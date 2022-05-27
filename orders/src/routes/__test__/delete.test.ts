@@ -2,7 +2,7 @@ import {Ticket} from "../../models/ticket";
 import request from 'supertest';
 import {app} from "../../app";
 import mongoose from "mongoose";
-import {OrderStatus} from "@iceshoptickets/common";
+import {OrderStatus} from "@pristinetickets/common";
 import {Order} from "../../models/order";
 import {natsWrapper} from "../../nats-wrapper";
 
@@ -15,7 +15,7 @@ it('marks an order as cancelled', async () => {
   });
   await ticket.save();
 
-  const user = global.signin();
+  const user = await global.signin();
   // make a request to create an order
   const { body: order } = await request(app)
     .post('/api/orders')
@@ -44,7 +44,7 @@ it('emits a order cancelled event', async () => {
   });
   await ticket.save();
 
-  const user = global.signin();
+  const user = await global.signin();
   // make a request to create an order
   const { body: order } = await request(app)
     .post('/api/orders')

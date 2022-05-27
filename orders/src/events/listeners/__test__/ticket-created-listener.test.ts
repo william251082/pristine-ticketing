@@ -1,6 +1,6 @@
 import {TicketCreatedListener} from "../ticket-created-listener";
 import {natsWrapper} from "../../../nats-wrapper";
-import {TicketCreatedEvent} from "@iceshoptickets/common";
+import {TicketCreatedEvent} from "@pristinetickets/common";
 import mongoose from "mongoose";
 import {Message} from 'node-nats-streaming';
 import {Ticket} from "../../../models/ticket";
