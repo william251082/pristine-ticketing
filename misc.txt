@@ -484,3 +484,13 @@ Per-user lock out.
 test error handling on deleting nats pod
 kubectl delete pod <nats_pod_name>
 
+
+manual test of create and update ticket
+cli mongo
+kubectl exec -it <your pod id> mongo
+db.tickets.find({})
+db.tickets.remove({})
+run concurrency test script
+check the tickets and orders db
+db.tickets.find({price: 10}).length() should be 0
+db.orders.find({price: 10}).length() should be 0
